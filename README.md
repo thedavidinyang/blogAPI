@@ -67,7 +67,7 @@ php artisan serve
 - Show Post: GET /api/posts/{post}
 - Update Post: PUT /api/posts/{post}
 - Delete Post: DELETE /api/posts/{post}
-## Interactions
+## Post Interactions
 - Like Post: POST /api/posts/{post}/like
 - Comment on Post: POST /api/posts/{post}/comment
 ## Middleware
@@ -78,4 +78,4 @@ You can import the Postman collection included in the repository to test all the
 
 - Open Postman.
 - Click on "Import" in the top left corner.
-- Select "Upload Files" and choose the postman_collection.json file included in the repository.
+- Select "Upload Files" and choose the blogApi.postman_collection.json file included in the repository.

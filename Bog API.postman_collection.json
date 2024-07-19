@@ -1,0 +1,518 @@
+{
+	"info": {
+		"_postman_id": "d381116d-5688-4913-b228-d2fb226ab923",
+		"name": "Bog API",
+		"description": "StartFragment\n\nA simple CRUD Blog/Posts API with user interactivity built with Laravel 10.\n\nEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19120064"
+	},
+	"item": [
+		{
+			"name": "Blogs",
+			"item": [
+				{
+					"name": "http://127.0.0.1:5000/api/blogs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "vg@123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/blogs",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"blogs"
+							]
+						},
+						"description": "##### Get all blogs"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/api/blogs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "vg@123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Blog title",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Blog description",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/blogs",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"blogs"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Create a blog"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/api/blogs/{blogId}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "vg@123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/blogs/1?title=update blog title&description=updated descriptioin",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"blogs",
+								"1"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "update blog title"
+								},
+								{
+									"key": "description",
+									"value": "updated descriptioin"
+								}
+							]
+						},
+						"description": "Update a blog"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/api/blogs/{blogId}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "vg@123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/blogs/49",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"blogs",
+								"49"
+							]
+						},
+						"description": "Delete a blog"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/api/blogs/{blogId}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "vg@123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/blogs/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"blogs",
+								"5"
+							]
+						},
+						"description": "Get all posts in a blog"
+					},
+					"response": []
+				}
+			],
+			"description": "API Endpoints for interaction with blogs"
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "http://127.0.0.1:5000/api/blogs/{blog}/posts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "vg@123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "post title",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "Post description",
+									"type": "text"
+								},
+								{
+									"key": "image_url",
+									"value": "image url",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/blogs/5/posts",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"blogs",
+								"5",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Create a post"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/api/blogs/{blog}/posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "vg@123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/blogs/5/posts",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"blogs",
+								"5",
+								"posts"
+							]
+						},
+						"description": "Get all posts in a blog"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/api/posts/{post}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "vg@123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/posts/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"1"
+							]
+						},
+						"description": "Get a single post"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/api/posts/{post}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "vg@123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/posts/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"1"
+							]
+						},
+						"description": "Delete a post"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/api/api/posts/{post}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "vg@123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/posts/2?title=update post title&content=updated post content&image_url",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"2"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "update post title"
+								},
+								{
+									"key": "content",
+									"value": "updated post content"
+								},
+								{
+									"key": "image_url",
+									"value": null
+								}
+							]
+						},
+						"description": "Update a post"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post Interactions",
+			"item": [
+				{
+					"name": "http://127.0.0.1:5000/api/posts/{post}/like",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "vg@123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "post title",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "Post description",
+									"type": "text"
+								},
+								{
+									"key": "image_url",
+									"value": "image url",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/posts/2/like",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"like"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Like a post"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/api/posts/{post}/comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "vg@123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "content",
+									"value": "Post comment",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/posts/4/comment",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"4",
+								"comment"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "**Make a comment to a post**"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
