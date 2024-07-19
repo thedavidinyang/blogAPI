@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Models\Blog;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class PostController extends Controller
 {
@@ -29,14 +30,24 @@ class PostController extends Controller
      */
     public function store(Request $request, Blog $blog)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'image_url' => 'required|string',
-        ]);
-        $post = new Post($validated);
-        $blog->posts()->save($post);
-        return $post;
+
+        try {
+            $validated = $request->validate([
+                'title' => 'required|string|max:255',
+                'content' => 'required|string',
+                'image_url' => 'required|string',
+            ]);
+            $post = new Post($validated);
+            $blog->posts()->save($post);
+            return $post;
+
+        } catch (ValidationException $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation errors',
+                'errors' => $e->errors(),
+            ], 422);
+        }
     }
 
     /**
@@ -60,14 +71,24 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'image_url' => 'required|string',
 
-        ]);
-        $post->update($validated);
-        return $post;
+        try {
+            $validated = $request->validate([
+                'title' => 'required|string|max:255',
+                'content' => 'required|string',
+                'image_url' => 'required|string',
+
+            ]);
+            $post->update($validated);
+            return $post;
+
+        } catch (ValidationException $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation errors',
+                'errors' => $e->errors(),
+            ], 422);
+        }
     }
 
     /**
