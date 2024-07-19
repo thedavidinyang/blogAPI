@@ -15,6 +15,10 @@ class TokenMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+
+        if ($request->header('token') !== 'vg@123') {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
         return $next($request);
     }
 }
