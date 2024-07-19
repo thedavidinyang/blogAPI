@@ -25,6 +25,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::middleware('token')->group(function () {
+
+    Route::get('test', function(){
+
+        return '1234';
+    });
     // Blog Routes
     Route::apiResource('blogs', BlogController::class);
 
