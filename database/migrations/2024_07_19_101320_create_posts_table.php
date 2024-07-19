@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('blog_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->text('content');
+            $table->text('image_url');
         });
     }
 

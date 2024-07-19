@@ -18,12 +18,20 @@ use App\Http\Controllers\CommentController;
 |
 */
 
-Route::apiResource('blogs', BlogController::class);
-Route::apiResource('blogs.posts', PostController::class)->shallow();
-
-Route::post('posts/{post}/like', [LikeController::class, 'store']);
-Route::post('posts/{post}/comment', [CommentController::class, 'store']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::middleware('token')->group(function () {
+    // Blog Routes
+    Route::apiResource('blogs', BlogController::class);
+
+    // Post Routes within a Blog
+    Route::apiResource('blogs.posts', PostController::class)->shallow();
+
+    // Like and Comment Routes for Posts
+    Route::post('posts/{post}/like', [LikeController::class, 'store']);
+    Route::post('posts/{post}/comment', [CommentController::class, 'store']);
 });
