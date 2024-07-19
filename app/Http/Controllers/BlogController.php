@@ -37,6 +37,7 @@ class BlogController extends Controller
             $blog = Blog::create($validated);
 
             return response()->json($blog, 201);
+
         } catch (ValidationException $e) {
             return response()->json([
                 'status' => 'error',
@@ -51,7 +52,8 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        return $blog->load('posts');
+
+        return response()->json($blog->load('posts'), 200);
     }
 
     /**

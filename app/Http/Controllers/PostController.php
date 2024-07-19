@@ -14,7 +14,8 @@ class PostController extends Controller
      */
     public function index(Blog $blog)
     {
-        return $blog->posts;
+        return response()->json($blog->posts, 200);
+
     }
 
     /**
@@ -39,7 +40,8 @@ class PostController extends Controller
             ]);
             $post = new Post($validated);
             $blog->posts()->save($post);
-            return $post;
+
+            return response()->json($post, 200);
 
         } catch (ValidationException $e) {
             return response()->json([
@@ -55,7 +57,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return $post->load('likes', 'comments');
+
+        
+        return response()->json($post->load('likes', 'comments'), 200); ;
     }
 
     /**
@@ -80,7 +84,10 @@ class PostController extends Controller
 
             ]);
             $post->update($validated);
-            return $post;
+
+            return response()->json($post, 200); 
+
+       
 
         } catch (ValidationException $e) {
             return response()->json([
