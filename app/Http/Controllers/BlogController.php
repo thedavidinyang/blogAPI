@@ -40,7 +40,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        //
+        return $blog->load('posts');
     }
 
     /**
@@ -56,7 +56,12 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+        $blog->update($validated);
+        return $blog;
     }
 
     /**
@@ -64,6 +69,7 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        $blog->delete();
+        return response()->noContent();
     }
 }
