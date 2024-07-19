@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
-
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
-
 
 class CommentController extends Controller
 {
@@ -33,21 +31,24 @@ class CommentController extends Controller
     public function store(Request $request, Post $post)
     {
 
-        try{
-        $validated = $request->validate([
-            'content' => 'required|string',
-        ]);
-        $comment = new Comment($validated);
-        $post->comments()->save($comment);
-        return $comment;
+        // dd($request->all());
 
-    } catch (ValidationException $e) {
-        return response()->json([
-            'status' => 'error',
-            'message' => 'Validation errors',
-            'errors' => $e->errors(),
-        ], 422);
-    }
+        try {
+            $validated = $request->validate([
+                'content' => 'required|string',
+            ]);
+            $comment = new Comment($validated);
+            $post->comments()->save($comment);
+
+            return response()->json($comment, 200);
+
+        } catch (ValidationException $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation errors',
+                'errors' => $e->errors(),
+            ], 422);
+        }
     }
     /**
      * Display the specified resource.
