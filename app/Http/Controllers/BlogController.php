@@ -12,7 +12,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        return Blog::all();
     }
 
     /**
@@ -28,7 +28,11 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+        return Blog::create($validated);
     }
 
     /**
