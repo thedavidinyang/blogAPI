@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -10,9 +11,9 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Blog $blog)
     {
-        //
+        return $blog->posts;
     }
 
     /**
@@ -26,9 +27,15 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Blog $blog)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+        ]);
+        $post = new Post($validated);
+        $blog->posts()->save($post);
+        return $post;
     }
 
     /**
@@ -36,7 +43,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return $post->load('likes', 'comments');
     }
 
     /**
@@ -52,7 +59,12 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+        ]);
+        $post->update($validated);
+        return $post;
     }
 
     /**
@@ -60,6 +72,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return response()->noContent();
     }
 }
