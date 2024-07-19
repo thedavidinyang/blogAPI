@@ -31,7 +31,9 @@ class PostController extends Controller
     public function store(Request $request, Blog $blog)
     {
 
-        dd($request->all());
+
+
+        dd($blog['id']);
         try {
             $validated = $request->validate([
                 'title' => 'required|string|max:255',
