@@ -13,7 +13,7 @@ A simple CRUD Blog/Posts API with user interactivity built with Laravel 10.
 
 1. Clone the repository:
 ```bash
-   git clone https://github.com/your-username/blogAPI.git
+   git clone https://github.com/thedavidinyang/blogAPI.git
    cd blogAPI
    ```
 
