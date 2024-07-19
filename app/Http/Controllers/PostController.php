@@ -76,7 +76,7 @@ class PostController extends Controller
             $validated = $request->validate([
                 'title' => 'required|string|max:255',
                 'content' => 'required|string',
-                'image_url' => 'required|string',
+                'image_url' => 'nullable|string',
 
             ]);
             $post->update($validated);
