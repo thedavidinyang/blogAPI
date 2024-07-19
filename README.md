@@ -48,7 +48,7 @@ php artisan serve
 
 
 2. The API will be available at http://localhost:8000.
-   or you can specify a different port to run the server if 8080 is already in use:
+   or you can specify a different port to run the server if 8000 is already in use:
  ```bash
    php artisan serve --port=5000
    ```
